@@ -7,10 +7,8 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-
+  build-application:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [14.x, 16.x, 18.x]
@@ -24,4 +22,20 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
     - run: yarn install
-    - run: yarn build
+   # - run: yarn build
+    - run: yarn test
+
+  cypress-run:
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node12.18.3-chrome87-ff82
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v5.x.x # use the explicit version number
+        with:
+          # Specify Browser since container image is compile with Firefox
+          browser: firefox

@@ -1,8 +1,4 @@
-interface ProductTypes {
-  id: string;
-  name: string;
-  price: string;
-}
+import { ProductTypes } from "../contracts";
 
 interface GetAllTypes {
   error: null;

@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { DetailedHTMLProps, InputHTMLAttributes } from "react";
+import type { DetailedHTMLProps, InputHTMLAttributes } from "react";
 
 interface TextinputProps
   extends DetailedHTMLProps<

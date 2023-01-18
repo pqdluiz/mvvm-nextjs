@@ -1,13 +1,14 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+
 import { ButtonList, TextInput } from "../../../components";
 import { useProductDetail } from "./view-model";
 
 export const ProductDetail: NextPage = () => {
   const navigate = useRouter();
-  const { onChange, deleteProduct, getProduct, name, price, updateProduct  } = useProductDetail();
-
+  const { onChange, deleteProduct, getProduct, name, price, updateProduct } =
+    useProductDetail();
 
   useEffect(() => {
     getProduct(navigate.pathname);
@@ -29,26 +30,28 @@ export const ProductDetail: NextPage = () => {
             title="Delete"
             onClick={() => {
               deleteProduct(navigate.pathname);
-              navigate.push("-1");
+              navigate.push("/");
             }}
           />
 
           <ButtonList
             title="Update"
             onClick={() => {
-              updateProduct(navigate.pathname, );
-              navigate.push("-1");
+              updateProduct(navigate.pathname);
+              navigate.push("/");
             }}
           />
         </div>
       </div>
-      <div style={{ display: "flex", flexDirection: "column", padding: 30 }}>
+      
+      <div className="flex flex-col p-32">
         <TextInput
           placeholder="Product Name"
           autoFocus={true}
           value={name}
           onChange={(event) => onChange(event.target.value, "name")}
         />
+        
         <TextInput
           placeholder="Product Price"
           type="number"

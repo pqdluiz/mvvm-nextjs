@@ -1,25 +1,6 @@
 import { create, deleteOne, getAll, getOne, update } from "../datasource";
-
-interface ProductTypes {
-  id: string;
-  name: string;
-  price: string;
-}
-
-interface ProductRepositoryTypes {
-  error: null,
-  result: boolean
-}
-
-interface ProductRepositoryDiferentTypes {
-  error: null,
-  result: ProductTypes | null
-}
-
-interface ProductRepositoryDiferentAllTypes {
-  error: null,
-  result: ProductTypes[] | null
-}
+import type { ProductTypes } from "../datasource/contracts";
+import type { ProductRepositoryDiferentAllTypes, ProductRepositoryDiferentTypes, ProductRepositoryTypes } from "./contracts";
 
 export async function createProduct(data: ProductTypes): Promise<ProductRepositoryTypes> {
   const { result, error } = await create(data);

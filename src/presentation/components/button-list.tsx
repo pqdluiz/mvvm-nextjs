@@ -1,6 +1,11 @@
-import { NextPage } from "next";
+import type { NextPage } from "next";
+import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 
-interface ButtonListProps {
+interface ButtonListProps
+  extends DetailedHTMLProps<
+    ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
   title: string;
   onClick: () => void;
 }

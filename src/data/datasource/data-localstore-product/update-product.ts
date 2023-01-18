@@ -1,10 +1,6 @@
+import { ProductTypes } from "../contracts";
 import { getAll } from "./get-all-product";
 
-interface ProductTypes {
-  id: string;
-  name: string;
-  price: string;
-}
 interface ProductUpdateTypes {
   error: null;
   result: boolean

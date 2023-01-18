@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+
 import { ButtonList, List } from "../../../components";
 import { useProductList } from "./view-model";
 
@@ -23,10 +24,17 @@ export const ProductList: NextPage = () => {
         }}
       >
         <h2>Product List</h2>
-        <ButtonList
-          title={"New"}
-          onClick={() => navigate.push(`/product-detail`)}
-        />
+        <div className="flex justify-around items-center">
+          <ButtonList
+            title="New"
+            onClick={() => navigate.push(`/product-new`)}
+          />
+          
+          <ButtonList
+            title="Edit"
+            onClick={() => navigate.push(`/product-detail`)}
+          />
+        </div>
       </div>
       <List
         data={products}

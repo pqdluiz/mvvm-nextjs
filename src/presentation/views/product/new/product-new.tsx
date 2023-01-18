@@ -1,6 +1,6 @@
-import { NextPage } from "next";
+import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+
 import { ButtonList, TextInput } from "../../../components";
 import { useNewProduct } from "./view-model";
 
@@ -8,7 +8,10 @@ export const ProductNew: NextPage = () => {
   let navigate = useRouter();
   const { name, price, onChange, saveProduct } = useNewProduct();
 
-  useEffect(() => {}, []);
+  const handleSubmit = () => {
+    saveProduct();
+    navigate.push("/");
+  };
 
   return (
     <div className="page">
@@ -21,14 +24,9 @@ export const ProductNew: NextPage = () => {
         }}
       >
         <h2>New Product</h2>
-        <ButtonList
-          title={"Save"}
-          onClick={() => {
-            saveProduct();
-            navigate.push("-1");
-          }}
-        />
+        <ButtonList title={"Save"} onClick={handleSubmit} />
       </div>
+      
       <div style={{ display: "flex", flexDirection: "column", padding: 30 }}>
         <TextInput
           placeholder="Product Name"
@@ -36,6 +34,7 @@ export const ProductNew: NextPage = () => {
           value={name}
           onChange={(event) => onChange(event.target.value, "name")}
         />
+        
         <TextInput
           placeholder="Product Price"
           type="number"

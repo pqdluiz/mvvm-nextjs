@@ -1,5 +1,5 @@
-import { NextPage } from "next";
-import { ProductTypes } from "../../data/datasource/contracts";
+import type { NextPage } from "next";
+import type { ProductTypes } from "../../data/datasource/contracts";
 
 interface ListProps {
   data: ProductTypes[] | null;
